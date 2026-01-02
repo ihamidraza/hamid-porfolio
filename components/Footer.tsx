@@ -111,8 +111,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-slate-800 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-slate-500 text-sm flex items-center gap-1">
-            © {currentYear} Hamid Raza. Built with{" "}
-            <Heart size={14} className="text-red-500" /> using Next.js
+            © {currentYear} Hamid Raza
           </p>
 
           <motion.button
