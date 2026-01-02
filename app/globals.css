@@ -30,7 +30,9 @@
 body {
   background: var(--bg-primary);
   color: var(--text-primary);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 @theme inline {
@@ -58,7 +60,8 @@ body {
   }
 
   .light .glass-morphism {
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
       0 2px 4px -1px rgba(0, 0, 0, 0.06);
   }
 
@@ -107,19 +110,23 @@ body {
   }
 
   /* Light mode text colors */
-  .light .text-slate-300 {
+  .light .text-slate-300,
+  html.light .text-slate-300 {
     color: #334155 !important;
   }
 
-  .light .text-slate-400 {
+  .light .text-slate-400,
+  html.light .text-slate-400 {
     color: #475569 !important;
   }
 
-  .light .text-slate-500 {
+  .light .text-slate-500,
+  html.light .text-slate-500 {
     color: #64748b !important;
   }
 
-  .light .text-white {
+  .light .text-white,
+  html.light .text-white {
     color: #0f172a !important;
   }
 
@@ -128,17 +135,85 @@ body {
   .light h3,
   .light h4,
   .light h5,
-  .light h6 {
+  .light h6,
+  html.light h1,
+  html.light h2,
+  html.light h3,
+  html.light h4,
+  html.light h5,
+  html.light h6 {
     color: #0f172a;
   }
 
+  /* Light mode paragraph text */
+  .light p,
+  html.light p {
+    color: #334155;
+  }
+
+  /* Light mode list items */
+  .light li,
+  html.light li {
+    color: #334155;
+  }
+
+  /* Light mode span elements with slate colors */
+  .light span.text-slate-400,
+  html.light span.text-slate-400 {
+    color: #475569 !important;
+  }
+
+  /* Ensure blue/purple accent colors stay visible in light mode */
+  .light .text-blue-400,
+  html.light .text-blue-400 {
+    color: #2563eb !important;
+  }
+
+  .light .text-purple-400,
+  html.light .text-purple-400 {
+    color: #7c3aed !important;
+  }
+
+  .light .text-green-400,
+  html.light .text-green-400 {
+    color: #16a34a !important;
+  }
+
+  .light .text-yellow-400,
+  html.light .text-yellow-400 {
+    color: #ca8a04 !important;
+  }
+
   /* Light mode hover states */
-  .light .hover\:text-white:hover {
+  .light .hover\:text-white:hover,
+  html.light .hover\:text-white:hover {
     color: #0f172a !important;
   }
 
-  .light .hover\:text-blue-400:hover {
+  .light .hover\:text-blue-400:hover,
+  html.light .hover\:text-blue-400:hover {
     color: #2563eb !important;
+  }
+
+  .light .hover\:text-blue-300:hover,
+  html.light .hover\:text-blue-300:hover {
+    color: #1d4ed8 !important;
+  }
+
+  /* Light mode navbar text */
+  .light nav a,
+  html.light nav a {
+    color: #334155;
+  }
+
+  .light nav a:hover,
+  html.light nav a:hover {
+    color: #0f172a;
+  }
+
+  .light nav button,
+  html.light nav button {
+    color: #334155;
   }
 
   /* Light mode button styles */
@@ -267,4 +342,86 @@ body {
 
 .light ::selection {
   background-color: rgba(59, 130, 246, 0.2);
+}
+
+/* Light mode footer */
+.light footer,
+html.light footer {
+  background-color: #f8fafc !important;
+}
+
+.light footer a,
+html.light footer a {
+  color: #475569;
+}
+
+.light footer a:hover,
+html.light footer a:hover {
+  color: #2563eb;
+}
+
+/* Light mode mobile menu text */
+.light .text-slate-300.hover\:text-white,
+html.light .text-slate-300.hover\:text-white {
+  color: #334155 !important;
+}
+
+/* Light mode experience description */
+.light ul.space-y-2.text-slate-300 li,
+html.light ul.space-y-2.text-slate-300 li {
+  color: #475569 !important;
+}
+
+/* Light mode section backgrounds */
+.light .bg-slate-900\/30,
+html.light .bg-slate-900\/30 {
+  background-color: rgba(241, 245, 249, 0.8) !important;
+}
+
+/* Light mode footer background */
+.light .bg-slate-950,
+html.light .bg-slate-950 {
+  background-color: #f1f5f9 !important;
+}
+
+/* Light mode form inputs - ensure visible backgrounds */
+.light input,
+.light textarea,
+html.light input,
+html.light textarea {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+.light input:focus,
+.light textarea:focus,
+html.light input:focus,
+html.light textarea:focus {
+  border-color: #3b82f6 !important;
+  background-color: #ffffff !important;
+}
+
+/* Light mode text-slate-200 (used in certifications) */
+.light .text-slate-200,
+html.light .text-slate-200 {
+  color: #1e293b !important;
+}
+
+/* Light mode blue-300 badges */
+.light .text-blue-300,
+html.light .text-blue-300 {
+  color: #1d4ed8 !important;
+}
+
+/* Light mode green-400 badges (for impact metrics) */
+.light .text-green-400,
+html.light .text-green-400 {
+  color: #15803d !important;
+}
+
+/* Light mode yellow-400/80 NDA badges */
+.light .text-yellow-400\/80,
+html.light .text-yellow-400\/80 {
+  color: #a16207 !important;
 }

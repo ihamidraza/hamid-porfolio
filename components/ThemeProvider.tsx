@@ -22,7 +22,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       setTheme(savedTheme);
       document.documentElement.classList.toggle(
         "light",
-        savedTheme === "light"
+        savedTheme === "light",
       );
     }
   }, []);

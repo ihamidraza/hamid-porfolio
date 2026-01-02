@@ -93,7 +93,7 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/30 light:bg-slate-100/80"
+      className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/30"
       ref={ref}
     >
       <div className="max-w-6xl mx-auto">
@@ -110,29 +110,19 @@ export default function Experience() {
 
         <div className="relative">
           {/* Timeline Line */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500" />
+          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500" />
 
           {experiences.map((exp, index) => (
             <motion.div
               key={`${exp.company}-${exp.period}`}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+              initial={{ opacity: 0, x: -50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              className={`relative mb-12 ${
-                index % 2 === 0
-                  ? "md:pr-1/2 md:text-right"
-                  : "md:pl-1/2 md:ml-auto"
-              }`}
+              className="relative mb-12"
             >
-              <div className="glass-morphism p-6 rounded-xl hover:bg-white/10 transition-all duration-300 group ml-16 md:ml-0">
+              <div className="glass-morphism p-6 rounded-xl hover:bg-white/10 transition-all duration-300 group ml-16">
                 {/* Timeline Dot */}
-                <div
-                  className={`absolute top-8 w-4 h-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full ${
-                    index % 2 === 0
-                      ? "left-6 md:right-[-8px] md:left-auto"
-                      : "left-6 md:left-[-8px]"
-                  }`}
-                >
+                <div className="absolute top-8 left-6 w-4 h-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full">
                   <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 animate-ping opacity-75" />
                 </div>
 

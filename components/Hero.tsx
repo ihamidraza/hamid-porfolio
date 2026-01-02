@@ -1,7 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, ArrowDown } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Mail,
+  ArrowDown,
+  Download,
+  MapPin,
+} from "lucide-react";
 
 export default function Hero() {
   const containerVariants = {
@@ -56,34 +63,76 @@ export default function Hero() {
 
         <motion.h2
           variants={itemVariants}
-          className="text-3xl sm:text-5xl lg:text-6xl font-bold text-slate-400 light:text-slate-700 mb-6"
+          className="text-3xl sm:text-5xl lg:text-6xl font-bold text-slate-400 mb-6"
         >
-          I lead teams that build exceptional digital solutions.
+          Building systems that process{" "}
+          <span className="text-blue-400">1M+ events/hour</span>
         </motion.h2>
 
         <motion.p
           variants={itemVariants}
-          className="text-lg sm:text-xl text-slate-400 light:text-slate-600 max-w-2xl mx-auto mb-8"
+          className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-4"
         >
-          I&apos;m a{" "}
-          <span className="text-blue-400">Lead Software Engineer</span> with 10+
-          years of experience architecting scalable IoT, real-time data
-          processing, and AI-powered solutions. Expert in translating complex
-          business requirements into high-impact technical solutions while
-          mentoring engineering teams.
+          <span className="text-blue-400 font-semibold">
+            Lead Software Engineer
+          </span>{" "}
+          specializing in IoT platforms, real-time analytics, and distributed
+          systems. I architect high-throughput solutions and lead engineering
+          teams to deliver mission-critical products with{" "}
+          <span className="text-purple-400">99.9% uptime</span>.
         </motion.p>
+
+        {/* Impact Metrics */}
+        <motion.div
+          variants={itemVariants}
+          className="flex flex-wrap justify-center gap-6 mb-8"
+        >
+          {[
+            { value: "10+", label: "Years Experience" },
+            { value: "1M+", label: "Events/Hour" },
+            { value: "99.9%", label: "Uptime Achieved" },
+            { value: "15+", label: "Engineers Mentored" },
+          ].map((stat) => (
+            <div key={stat.label} className="text-center">
+              <div className="text-2xl sm:text-3xl font-bold text-gradient">
+                {stat.value}
+              </div>
+              <div className="text-xs sm:text-sm text-slate-500">
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </motion.div>
 
         <motion.div
           variants={itemVariants}
-          className="flex gap-4 justify-center mb-12"
+          className="flex items-center justify-center gap-2 text-slate-500 text-sm mb-6"
+        >
+          <MapPin size={16} />
+          <span>Islamabad, Pakistan • Open to Remote</span>
+        </motion.div>
+
+        <motion.div
+          variants={itemVariants}
+          className="flex flex-wrap gap-4 justify-center mb-12"
         >
           <motion.a
-            href="#contact"
-            className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg font-semibold hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300"
+            href="/resume.pdf"
+            download="Hamid_Raza_Resume.pdf"
+            className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg font-semibold hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300 flex items-center gap-2"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Get In Touch
+            <Download size={20} />
+            Download Resume
+          </motion.a>
+          <motion.a
+            href="#contact"
+            className="px-8 py-4 glass-morphism rounded-lg font-semibold hover:bg-white/10 transition-all duration-300"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Let&apos;s Talk
           </motion.a>
           <motion.a
             href="#projects"
@@ -91,7 +140,7 @@ export default function Hero() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            View My Work
+            View Projects
           </motion.a>
         </motion.div>
 

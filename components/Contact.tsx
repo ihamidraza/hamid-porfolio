@@ -2,36 +2,12 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { Mail, MapPin, Send } from "lucide-react";
 
 export default function Contact() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-  const [status, setStatus] = useState("");
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus("sending");
-
-    // Simulate form submission
-    setTimeout(() => {
-      setStatus("success");
-      setFormData({ name: "", email: "", message: "" });
-      setTimeout(() => setStatus(""), 3000);
-    }, 1000);
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
   return (
     <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8" ref={ref}>
@@ -156,7 +132,8 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <form
-              onSubmit={handleSubmit}
+              action="https://formspree.io/f/your-form-id"
+              method="POST"
               className="glass-morphism p-8 rounded-xl space-y-6"
             >
               <div>
@@ -170,10 +147,8 @@ export default function Contact() {
                   type="text"
                   id="name"
                   name="name"
-                  value={formData.name}
-                  onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:outline-none focus:border-blue-500 text-white transition-colors"
+                  className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-white transition-colors"
                   placeholder="John Doe"
                 />
               </div>
@@ -189,10 +164,8 @@ export default function Contact() {
                   type="email"
                   id="email"
                   name="email"
-                  value={formData.email}
-                  onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:outline-none focus:border-blue-500 text-white transition-colors"
+                  className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-white transition-colors"
                   placeholder="john@example.com"
                 />
               </div>
@@ -207,12 +180,10 @@ export default function Contact() {
                 <textarea
                   id="message"
                   name="message"
-                  value={formData.message}
-                  onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:outline-none focus:border-blue-500 text-white transition-colors resize-none"
-                  placeholder="Your message here..."
+                  className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-white transition-colors resize-none"
+                  placeholder="Tell me about your project or opportunity..."
                 />
               </div>
 
@@ -221,33 +192,23 @@ export default function Contact() {
                 className="w-full px-6 py-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg font-semibold text-white hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300 flex items-center justify-center gap-2"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                disabled={status === "sending"}
               >
-                {status === "sending" ? (
-                  "Sending..."
-                ) : status === "success" ? (
-                  "Message Sent! ✓"
-                ) : (
-                  <>
-                    <Send size={20} />
-                    Send Message
-                  </>
-                )}
+                <Send size={20} />
+                Send Message
               </motion.button>
+
+              <p className="text-xs text-slate-500 text-center">
+                Or email me directly at{" "}
+                <a
+                  href="mailto:hamiofficial@gmail.com"
+                  className="text-blue-400 hover:underline"
+                >
+                  hamiofficial@gmail.com
+                </a>
+              </p>
             </form>
           </motion.div>
         </div>
-
-        {/* Footer */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-20 pt-8 border-t border-slate-800 text-center text-slate-400"
-        >
-          <p className="mb-2">Designed & Built by Hamid Raza</p>
-          <p className="text-sm">© 2026 All rights reserved.</p>
-        </motion.div>
       </div>
     </section>
   );
