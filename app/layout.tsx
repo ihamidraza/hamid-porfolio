@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, JetBrains_Mono } from "next/font/google";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import Navbar from "@/components/Navbar";
 import "./globals.css";
 
-const geist = Geist({ 
+const geist = Geist({
   subsets: ["latin"],
-  variable: '--font-geist'
+  variable: "--font-geist",
 });
 
 const jetbrainsMono = JetBrains_Mono({
@@ -46,7 +48,10 @@ export default function RootLayout({
       <body
         className={`${geist.variable} ${jetbrainsMono.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider>
+          <Navbar />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

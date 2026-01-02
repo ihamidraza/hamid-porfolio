@@ -56,21 +56,21 @@ export default function Hero() {
 
         <motion.h2
           variants={itemVariants}
-          className="text-3xl sm:text-5xl lg:text-6xl font-bold text-slate-400 mb-6"
+          className="text-3xl sm:text-5xl lg:text-6xl font-bold text-slate-400 light:text-slate-700 mb-6"
         >
           I lead teams that build exceptional digital solutions.
         </motion.h2>
 
         <motion.p
           variants={itemVariants}
-          className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-8"
+          className="text-lg sm:text-xl text-slate-400 light:text-slate-600 max-w-2xl mx-auto mb-8"
         >
           I&apos;m a{" "}
           <span className="text-blue-400">Lead Software Engineer</span> with 10+
-          years of experience architecting scalable IoT, real-time data processing, and
-          AI-powered solutions. Expert in translating complex business
-          requirements into high-impact technical solutions while mentoring
-          engineering teams.
+          years of experience architecting scalable IoT, real-time data
+          processing, and AI-powered solutions. Expert in translating complex
+          business requirements into high-impact technical solutions while
+          mentoring engineering teams.
         </motion.p>
 
         <motion.div

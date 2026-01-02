@@ -1,21 +1,30 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTheme } from "./ThemeProvider";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const [activeSection, setActiveSection] = useState("home");
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-      
+
       // Detect active section
-      const sections = ['home', 'about', 'experience', 'skills', 'projects', 'contact'];
-      const current = sections.find(section => {
+      const sections = [
+        "home",
+        "about",
+        "experience",
+        "skills",
+        "projects",
+        "contact",
+      ];
+      const current = sections.find((section) => {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
@@ -59,33 +68,67 @@ export default function Navbar() {
           </motion.a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <motion.a
                 key={item.name}
                 href={item.href}
                 className={`transition-colors relative group ${
                   activeSection === item.href.slice(1)
-                    ? 'text-white font-medium'
-                    : 'text-slate-300 hover:text-white'
+                    ? "text-white font-medium"
+                    : "text-slate-300 hover:text-white"
                 }`}
                 whileHover={{ y: -2 }}
               >
                 {item.name}
-                <span className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 ${
-                  activeSection === item.href.slice(1) ? 'w-full' : 'w-0 group-hover:w-full'
-                }`} />
+                <span
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 ${
+                    activeSection === item.href.slice(1)
+                      ? "w-full"
+                      : "w-0 group-hover:w-full"
+                  }`}
+                />
               </motion.a>
             ))}
+
+            {/* Theme Toggle */}
+            <motion.button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg glass-morphism hover:bg-white/10 transition-all duration-300"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="Toggle theme"
+            >
+              {theme === "dark" ? (
+                <Sun className="w-5 h-5 text-yellow-400" />
+              ) : (
+                <Moon className="w-5 h-5 text-slate-700" />
+              )}
+            </motion.button>
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-slate-300 hover:text-white"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="md:hidden flex items-center gap-2">
+            <motion.button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg glass-morphism hover:bg-white/10 transition-all duration-300"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="Toggle theme"
+            >
+              {theme === "dark" ? (
+                <Sun className="w-5 h-5 text-yellow-400" />
+              ) : (
+                <Moon className="w-5 h-5 text-slate-700" />
+              )}
+            </motion.button>
+            <button
+              className="text-slate-300 hover:text-white"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -105,8 +148,8 @@ export default function Navbar() {
                   href={item.href}
                   className={`block px-3 py-2 rounded-md transition-colors ${
                     activeSection === item.href.slice(1)
-                      ? 'text-white bg-white/10 font-medium'
-                      : 'text-slate-300 hover:text-white hover:bg-white/10'
+                      ? "text-white bg-white/10 font-medium"
+                      : "text-slate-300 hover:text-white hover:bg-white/10"
                   }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >

@@ -77,21 +77,23 @@ export default function Experience() {
         "Developed automation scripts reducing manual operations workload by 40%",
         "Technologies: Node.js, Express.js, PostgreSQL",
       ],
-    },    {
-      title: 'Backend Developer',
-      company: 'uExel',
-      period: 'Jun 2015 - Aug 2017',
+    },
+    {
+      title: "Backend Developer",
+      company: "uExel",
+      period: "Jun 2015 - Aug 2017",
       description: [
-        'Managed full development lifecycle supporting 5,000+ daily API requests',
-        'Designed RESTful APIs facilitating seamless frontend-backend communication',
-        'Technologies: Node.js, Express.js, MongoDB',
+        "Managed full development lifecycle supporting 5,000+ daily API requests",
+        "Designed RESTful APIs facilitating seamless frontend-backend communication",
+        "Technologies: Node.js, Express.js, MongoDB",
       ],
-    },  ];
+    },
+  ];
 
   return (
     <section
       id="experience"
-      className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/30"
+      className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/30 light:bg-slate-100/80"
       ref={ref}
     >
       <div className="max-w-6xl mx-auto">
@@ -112,7 +114,7 @@ export default function Experience() {
 
           {experiences.map((exp, index) => (
             <motion.div
-              key={exp.company}
+              key={`${exp.company}-${exp.period}`}
               initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.2 }}

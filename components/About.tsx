@@ -50,7 +50,7 @@ export default function About() {
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-4 text-slate-300"
+            className="space-y-4 text-slate-300 light:text-slate-700"
           >
             <p className="text-lg leading-relaxed">
               I&apos;m a{" "}
