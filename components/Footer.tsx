@@ -46,7 +46,7 @@ export default function Footer() {
               href="#home"
               className="text-2xl font-bold text-gradient mb-4 block"
             >
-              &lt;HR /&gt;
+              HAMID RAZA
             </a>
             <p className="text-slate-400 mb-4 max-w-md">
               Lead Software Engineer specializing in IoT platforms, real-time
